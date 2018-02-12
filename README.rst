@@ -18,7 +18,6 @@ This middleware provides a ``uadetector.useragent.UserAgent`` object to handling
 
 .. code-block:: python
 
- import json
  from wsgiref.simple_server import make_server
 
  # import middleware
