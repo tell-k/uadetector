@@ -34,7 +34,7 @@ This middleware provides a ``uadetector.useragent.UserAgent`` object to handling
      ua.device_type      #=> "pc"
      ua.os               #=> "Mac OSX"
      ua.browser          #=> "Chrome"
-     ua.from_pc          #=> True 
+     ua.from_pc          #=> True
      ua.from_smartphone  #=> False
 
      return [ua.os.encoding('utf-8')]
@@ -66,7 +66,7 @@ You can also replace the key of ``environ`` or the ``UserAgent`` class.
 Web framework extensions
 --------------------------------
 
-Some Web frameworks provide a way to extend in a different way from WSGI Middleware. We provide shortcuts according to that way.
+Some web frameworks provide a way to extend in a different way from WSGI Middleware. We provide shortcuts according to that way.
 
 **Caution: I don't intend to actively respond to the framework. If you are worried, you should use WSGIMiddleware.**
 
@@ -93,14 +93,14 @@ You can use Django's ``MIDDLEWARE``.
      print(request.ua.from_smartphone) # => True or False
      # ... omit ...
 
-How to customize property name of request object and replace UserAgent class. 
+Customize property name of request object and replace UserAgent class.
 
 .. code-block:: python
 
  # settings.py
- 
- UADTECTOR_REQUEST_PROPERTY_NAME = 'agent' # => You can use "request.agent"
- UADTECTOR_USERAGENT_CLASS = 'path.to.MyUserAgent' 
+
+ UADETECTOR_REQUEST_PROPERTY_NAME = 'agent' # => You can use "request.agent"
+ UADETECTOR_USERAGENT_CLASS = 'path.to.MyUserAgent'
 
 Pyramid
 ~~~~~~~~~
@@ -124,16 +124,16 @@ You can use ``config.add_request_method``.
      config.add_request_method(ua_prop(), name='ua', reify=True)
      # ... omit ...
 
-How to customize property name of request object and replace UserAgent class. 
+Customize property name of request object and replace UserAgent class.
 
 .. code-block:: python
 
  config.add_request_method(
-     ua_prop('path.to.MyUserAgent'), 
+     ua_prop('path.to.MyUserAgent'),
      name='agent',  # => You can use "request.agent"
      reify=True
  )
- 
+
 
 Flask
 ~~~~~~~~~
@@ -153,14 +153,14 @@ You can use ``Flask Extension``.
      print(request.ua.from_smartphone) # => True or False
      # ... omit ...
 
-How to customize property name of request object and replace UserAgent class. 
+Customize property name of request object and replace UserAgent class.
 
 .. code-block:: python
 
  app = Flask(__name__)
 
  app.config['UADETECTOR_USERAGENT_CLASS'] = 'path.to.MyUserAgent'
- app.config['UADETECTOR_REQUEST_PROPERTY_NAME'] = 'agent'
+ app.config['UADETECTOR_REQUEST_PROPERTY_NAME'] = 'agent' # => You can use "request.agent"
 
  UADetector(app)
 
@@ -180,27 +180,28 @@ You can use custom ``RequestHandler``.
           print(self.request.ua.from_smartphone) # => True or False
           # ... omit ...
 
-How to customize property name of request object and replace UserAgent class. 
+Customize property name of request object and replace UserAgent class.
 
 .. code-block:: python
 
  from tornado.options import define
  from uadetector.tornado.web import RequestHandler
- 
+
  define(
-     'uadetector_request_property_name', 
-     default='agent',
+     'uadetector_request_property_name',
+     default='agent', # => You can use "self.request.agent"
  )
  define(
-     'uadetector_useragent_class', 
+     'uadetector_useragent_class',
      default='path.to.MyUserAgent'
  )
 
  class IndexHandler(RequestHandler):
 
-
-UserAgent object
+UserAgent
 ===================
+
+List of properties of ``uadetector.useragent.UserAgent`` object.
 
 attrs
 -----------
@@ -234,6 +235,24 @@ detectors
 * UserAgent.from_windows_phone
 * UserAgent.from_ios
 * UserAgent.from_android_os
+
+Tips
+===================
+
+If you want a ``UserAgent`` object simply from the User-Agent string, Please use ``get_useruseragent``.
+
+.. code-block:: python
+
+ from uadetector import get_useragent
+
+ ua_string = "Mozilla/5.0 (iPhone; CPU iPhone OS ..."
+
+ ua = get_useragent(ua_string)
+ us.from_smartphone # => True
+
+ # Use custom useragent class
+ ua = get_useragent(ua_string, useragent_class='path.to.MyUserAgent')
+
 
 License
 ========
