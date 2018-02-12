@@ -20,6 +20,6 @@ def app(environ, start_response):
 application = UADetector(app)
 
 if __name__ == "__main__":
-    with make_server('127.0.0.1', 8080, application) as server:
+    with make_server('127.0.0.1', 8000, application) as server:
         print("Serving on port 8000...")
         server.serve_forever()
