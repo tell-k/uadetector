@@ -38,7 +38,7 @@ This middleware provides a ``uadetector.useragent.UserAgent`` object to handling
 
      return [ua.os.encoding('utf-8')]
 
- # apply Middleware
+ # Apply middleware
  application = UADetector(app)
 
  if __name__ == "__main__":
@@ -55,7 +55,7 @@ You can also replace the key of ``environ`` or the ``UserAgent`` class.
  class MyUserAgent(UserAgent):
       # Write your custom codes.
 
- # apply middleware
+ # Apply middleware
  application = UADetector(
     app,
     envorion_key='your.favorite.key'
