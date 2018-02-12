@@ -1,14 +1,12 @@
-WSGI middleware for handling User-Agent.
-Thanks to [woothee](https://github.com/woothee/woothee-ruby), UADetector supports various User-Agents.
-
-This library is heavily inspired by `k0kubun/rack-user_agent <https://github.com/k0kubun/rack-user_agent>`. Thanks :)
+WSGI middleware for handling User-Agent. Thanks to `woothee <https://github.com/woothee/woothee-python>`_ , UADetector supports various User-Agents. This is heavily inspired by `k0kubun/rack-user_agent <https://github.com/k0kubun/rack-user_agent>`_ . Thanks :)
 
 Installation
 ===================
 
-.. code-block:: python
+::
 
  $ pip install uadetector
+
 
 Usage
 =====================
@@ -49,7 +47,7 @@ This middleware provides a `uadetector.useragent.UserAgent` object to handling U
          print("Serving on port 8000...")
          server.serve_forever()
 
-You can also replace the environ key or the Useragent class.
+You can also replace the key of environ_dict or the UserAgent class.
 
 .. code-block:: python
 
@@ -64,6 +62,95 @@ You can also replace the environ key or the Useragent class.
     envorion_key='your.favorite.key'
     useragent_class='xxxx.MyUserAgent'
  )
+
+Web Frameworks 
+----------------------
+
+Some Web frameworks provide a way to extend in a different way from WSGI Middleware. We provide shortcuts according to that way.
+
+** Caution: I don't intend to actively respond to the framework. If you are worried, you should use WSGIMiddleware. **
+
+Django
+~~~~~~~~~
+
+You can use Django's `MIDDLEWARE`. like this.
+
+.. code-block:: python
+
+ # settings.py 
+
+ MIDDLEWARE = [
+    # Add UADetecorMiddleware
+    'uadetector.django.middleware.UADetectorMiddleware',
+    # ... omit ...
+ ]
+
+.. code-block:: python
+
+ # views.py 
+
+ def index_view(request):
+     print(request.ua.from_smartphone) # => True or False
+     # ... omit ...
+
+
+Pyramid
+~~~~~~~~~
+
+You can use `config.add_request_method`.
+
+.. code-block:: python
+
+ from uadetector.pyramid import ua_prop
+
+
+ def index(request):
+     print(request.ua.from_smartphone) # => True or False
+     # ... omit ...
+
+
+ with Configurator() as config:
+     config.add_route('index', '/')
+     config.add_view(index, route_name='index')
+
+     config.add_request_method(ua_prop(), name='ua', reify=True)
+     # ... omit ...
+
+
+Flask
+~~~~~~~~~
+
+You can use `Flask Extension`.
+
+.. code-block:: python
+
+ from flask import Flask, request
+ from uadetector.flask import UADetector
+
+ app = Flask(__name__)
+ UADetector(app)
+
+ @app.route('/')
+ def index():
+     print(request.ua.from_smartphone) # => True or False
+     # ... omit ...
+
+
+Tornado
+~~~~~~~~~
+
+You can use custom `RequestHandler`.
+
+.. code-block:: python 
+
+  from uadetector.tornado.web import RequestHandler
+
+  class IndexHandler(RequestHandler):
+
+      def get(self):
+          print(self.request.ua.from_smartphone) # => True or False
+          # ... omit ...
+
 
 UserAgent object
 ===================
