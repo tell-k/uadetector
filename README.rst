@@ -1,4 +1,4 @@
-WSGI middleware for handling User-Agent. Thanks to `woothee <https://github.com/woothee/woothee-python>`_ , UADetector supports various User-Agents. This is heavily inspired by `k0kubun/rack-user_agent <https://github.com/k0kubun/rack-user_agent>`_ . Thanks :)
+WSGI Middleware and web framework extensions for handling User-Agent. Thanks to `woothee <https://github.com/woothee/woothee-python>`_ , UADetector supports various User-Agents. This library respects to `k0kubun/rack-user_agent <https://github.com/k0kubun/rack-user_agent>`_ .
 
 Installation
 ===================
@@ -30,16 +30,16 @@ This middleware provides a `uadetector.useragent.UserAgent` object to handling U
      # get 'uadetector.useragent.UserAgent' object from environ dict.
      ua = environ.get('uadetector.useragent')
 
-     content = json.dumps({
-         'device_type': ua.device_type,
-         'os': ua.os,
-         'browser': ua.browser,
-         'from_pc': ua.from_pc,
-         'from_smartphone': ua.from_pc,
-     }, indent=2)
-     return [content.encode('utf-8')]
+     ua.user_agent       #=> "Mozilla/5.0 (Macintosh; ..."
+     ua.device_type      #=> "pc"
+     ua.os               #=> "Mac OSX"
+     ua.browser          #=> "Chrome"
+     ua.from_pc?         #=> True
+     ua.from_smartphone? #=> False
 
- # apply middleware
+     return [ua.os.encoding('utf-8')]
+
+ # apply Middleware
  application = UADetector(app)
 
  if __name__ == "__main__":
@@ -47,7 +47,7 @@ This middleware provides a `uadetector.useragent.UserAgent` object to handling U
          print("Serving on port 8000...")
          server.serve_forever()
 
-You can also replace the key of environ_dict or the UserAgent class.
+You can also replace the key of ``environ`` or the ``UserAgent`` class.
 
 .. code-block:: python
 
@@ -63,21 +63,21 @@ You can also replace the key of environ_dict or the UserAgent class.
     useragent_class='xxxx.MyUserAgent'
  )
 
-Web Frameworks 
+Web Frameworks
 ----------------------
 
 Some Web frameworks provide a way to extend in a different way from WSGI Middleware. We provide shortcuts according to that way.
 
-** Caution: I don't intend to actively respond to the framework. If you are worried, you should use WSGIMiddleware. **
+**Caution: I don't intend to actively respond to the framework. If you are worried, you should use WSGIMiddleware.**
 
 Django
 ~~~~~~~~~
 
-You can use Django's `MIDDLEWARE`. like this.
+You can use Django's ``MIDDLEWARE``.
 
 .. code-block:: python
 
- # settings.py 
+ # settings.py
 
  MIDDLEWARE = [
     # Add UADetecorMiddleware
@@ -87,7 +87,7 @@ You can use Django's `MIDDLEWARE`. like this.
 
 .. code-block:: python
 
- # views.py 
+ # views.py
 
  def index_view(request):
      print(request.ua.from_smartphone) # => True or False
@@ -97,7 +97,7 @@ You can use Django's `MIDDLEWARE`. like this.
 Pyramid
 ~~~~~~~~~
 
-You can use `config.add_request_method`.
+You can use ``config.add_request_method``.
 
 .. code-block:: python
 
@@ -120,7 +120,7 @@ You can use `config.add_request_method`.
 Flask
 ~~~~~~~~~
 
-You can use `Flask Extension`.
+You can use ``Flask Extension``.
 
 .. code-block:: python
 
@@ -135,13 +135,12 @@ You can use `Flask Extension`.
      print(request.ua.from_smartphone) # => True or False
      # ... omit ...
 
-
 Tornado
 ~~~~~~~~~
 
-You can use custom `RequestHandler`.
+You can use custom ``RequestHandler``.
 
-.. code-block:: python 
+.. code-block:: python
 
   from uadetector.tornado.web import RequestHandler
 
@@ -158,6 +157,7 @@ UserAgent object
 attrs
 -----------
 
+* UserAgent.device_variant
 * UserAgent.device_type
 * UserAgent.os
 * UserAgent.os_version

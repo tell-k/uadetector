@@ -8,9 +8,13 @@
 import re
 
 import woothee
+from woothe.dataset import VALUE_UNKNOWN
 
 from .constants import USERAGENT_CLASS
 from .utils import import_class
+
+
+UNKNOWN_VARIANT = 'unknown'
 
 
 def get_useragent(useragent_string, useragent_class=None):
@@ -19,7 +23,7 @@ def get_useragent(useragent_string, useragent_class=None):
 
 
 def _suppress_unknown(version):
-    if version.lower() == 'unknown':
+    if version.lower() == VALUE_UNKNOWN.lower():
         return None
     else:
         return version
@@ -38,7 +42,7 @@ class UserAgent:
     }
 
     def __init__(self, useragent_string):
-        self._useragent_string = useragent_string
+        self.user_agent = useragent_string
         self._woothee_result = woothee.parse(useragent_string)
 
     def __getattr__(self, name):
@@ -46,7 +50,13 @@ class UserAgent:
             return self._woothee_result.get(self.attr_map.get(name))
         return self.__getattribute__(name)
 
-    # checkers --
+    @property
+    def device_variant
+        if self.device_type.lower() == VALUE_UNKNOWN.lower():
+            return UNKNOWN_VARIANT
+        return self.device_type
+
+    # helpers --
 
     @property
     def from_pc(self):
@@ -101,7 +111,7 @@ class UserAgent:
 
     @property
     def _from_andorid_mobile(self):
-        m = re.search(r'Android.+Mobi(le)?', self._useragent_string)
+        m = re.search(r'Android.+Mobi(le)?', self.user_agent)
         return True if m else False
 
     @property
