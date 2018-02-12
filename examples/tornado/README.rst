@@ -15,7 +15,6 @@ Run
 
 ::
 
- $ cd examples/tornado
  $ python main.py
 
 You can access http://127.0.0.1:8888. and get output like bellow.
