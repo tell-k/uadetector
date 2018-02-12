@@ -1,5 +1,5 @@
 from .constants import UA_STRING
-from .testapp import django
+from .testapp import django  # NOQA
 
 
 class TestDjangoMiddleware:

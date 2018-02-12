@@ -1,5 +1,5 @@
 ====================
-Example for Pyramid
+Example for Tornado
 ====================
 
 Setup
@@ -8,14 +8,14 @@ Setup
 ::
 
  $ pip install uadetector
- $ pip install pyramid
+ $ pip install tornado
 
 Run
 ===========
 
 ::
 
- $ cd examples/pyramid
+ $ cd examples/tornado
  $ python main.py
 
-You can access http://127.0.0.1:8000
+You can access http://127.0.0.1:8888

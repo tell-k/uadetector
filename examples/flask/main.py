@@ -10,6 +10,7 @@ app = Flask(__name__)
 
 UADetector(app)
 
+
 @app.route('/')
 def index():
     return '<pre>{}</pre>'.format(json.dumps({

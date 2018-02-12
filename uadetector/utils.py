@@ -1,3 +1,11 @@
+"""
+    uadetector.utils
+    ~~~~~~~~~~~~~~~~~~~~~~~~
+
+    :author: tell-k <ffk2005 at gmail.com>
+    :copyright: tell-k. All Rights Reserved.
+"""
+
 import pydoc
 import inspect
 

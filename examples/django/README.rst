@@ -1,5 +1,5 @@
 ====================
-Example for Pyramid
+Example for Django
 ====================
 
 Setup
@@ -8,14 +8,14 @@ Setup
 ::
 
  $ pip install uadetector
- $ pip install pyramid
+ $ pip install Django
 
 Run
 ===========
 
 ::
 
- $ cd examples/pyramid
- $ python main.py
+ $ cd examples/django
+ $ python manage.py runserver
 
 You can access http://127.0.0.1:8000

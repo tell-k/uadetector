@@ -1,3 +1,12 @@
+"""
+    uadetector.constants
+    ~~~~~~~~~~~~~~~~~~~~~~
+
+    Manage constant values for uadatector.
+
+    :author: tell-k <ffk2005 at gmail.com>
+    :copyright: tell-k. All Rights Reserved.
+"""
 
 # WSGI environ key name
 ENVIRON_KEY = 'uadetector.useragent'

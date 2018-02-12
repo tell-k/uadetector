@@ -1,21 +1,20 @@
-====================
-Example for Pyramid
-====================
+=============================
+Example for WSGI App
+=============================
 
 Setup
-======
+===========
 
 ::
 
  $ pip install uadetector
- $ pip install pyramid
 
 Run
 ===========
 
 ::
 
- $ cd examples/pyramid
+ $ cd examples/wsgi
  $ python main.py
 
 You can access http://127.0.0.1:8000

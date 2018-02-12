@@ -1,13 +1,15 @@
 """
-    uadetector
-    ~~~~~~~~~~---
+    uadetector.wsgi
+    ~~~~~~~~~~~~~~~~
+
+    WSGI Middleware for uadetector.
 
     :author: tell-k <ffk2005 at gmail.com>
     :copyright: tell-k. All Rights Reserved.
 """
 import logging
 
-from .constants import ENVIRON_KEY, USERAGENT_CLASS
+from .constants import ENVIRON_KEY
 from .useragent import get_useragent
 
 
@@ -41,5 +43,8 @@ class UADetector:
             )
             return self.app(environ, start_response)
 
-        environ[self.environ_key] = get_useragent(environ['HTTP_USER_AGENT'], self.ua_class)
+        environ[self.environ_key] = get_useragent(
+            environ['HTTP_USER_AGENT'],
+            self.ua_class
+        )
         return self.app(environ, start_response)

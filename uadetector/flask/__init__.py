@@ -1,3 +1,13 @@
+"""
+    uadetector.flask
+    ~~~~~~~~~~~~~~~~~~
+
+    Flask extension for uadatector.
+
+    :author: tell-k <ffk2005 at gmail.com>
+    :copyright: tell-k. All Rights Reserved.
+"""
+
 import logging
 
 from werkzeug.utils import cached_property
@@ -18,7 +28,8 @@ class UADetector:
 
     def init_app(self, app):
         ua_class = app.config.get('UADETECTOR_USERAGENT_CLASS')
-        prop_name = app.config.get('UADETECTOR_REQUEST_PROPERTY_NAME', REQUEST_PROPERTY_NAME)
+        prop_name = app.config.get('UADETECTOR_REQUEST_PROPERTY_NAME',
+                                   REQUEST_PROPERTY_NAME)
 
         if hasattr(app.request_class, prop_name):
             logger.warn(

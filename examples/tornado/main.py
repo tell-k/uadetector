@@ -2,12 +2,19 @@ import json
 
 import tornado.ioloop
 import tornado.web
-from tornado.options import define
 
 from uadetector.tornado.web import RequestHandler
 
-# define('uadetector_request_property_name', default='ua', help='xxx')
-# define('uadetector_useragent_class', default='myuser.MyUserAgent', help='xxx')
+# define(
+#     'uadetector_request_property_name',
+#     default='ua',
+#     help='xxx'
+# )
+# define(
+#     'uadetector_useragent_class',
+#     default='myuser.MyUserAgent',
+#     help='xxx'
+# )
 
 
 class IndexHandler(RequestHandler):

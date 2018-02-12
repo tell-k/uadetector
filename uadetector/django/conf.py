@@ -5,9 +5,11 @@
     :author: tell-k <ffk2005 at gmail.com>
     :copyright: tell-k. All Rights Reserved.
 """
+
 from django.conf import settings as django_settings
 
 from .. import constants
+
 
 class Settings:
 

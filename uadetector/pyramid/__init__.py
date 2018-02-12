@@ -1,3 +1,12 @@
+"""
+    uadetector.pyramid
+    ~~~~~~~~~~~~~~~~~~~~~
+
+    Generate request property function for pyramid.
+
+    :author: tell-k <ffk2005 at gmail.com>
+    :copyright: tell-k. All Rights Reserved.
+"""
 
 from ..useragent import get_useragent
 

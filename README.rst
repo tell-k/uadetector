@@ -14,7 +14,7 @@ Usage
 WSGI middleware
 ----------------------
 
-This middleware provides a ``uadetector.useragent.UserAgent`` object to handling User-agents.
+This middleware provides a ``uadetector.useragent.UserAgent`` object to handling User-agents. 
 
 .. code-block:: python
 
@@ -26,7 +26,7 @@ This middleware provides a ``uadetector.useragent.UserAgent`` object to handling
  def app(environ, start_response):
      start_response('200 OK', [('Content-Type', 'text/plain')])
 
-     # get 'uadetector.useragent.UserAgent' object from environ dict.
+     # get 'UserAgent' object from environ dict.
      ua = environ.get('uadetector.useragent')
 
      ua.user_agent       #=> "Mozilla/5.0 (Macintosh; ..."
@@ -61,6 +61,8 @@ You can also replace the key of ``environ`` or the ``UserAgent`` class.
     envorion_key='your.favorite.key'
     useragent_class='path.to.MyUserAgent'
  )
+
+See also `example <https://github.com/tell-k/uadetector/blob/master/examples/wsgi/README.rst>`_
 
 Web framework extensions
 --------------------------------
@@ -101,6 +103,8 @@ Customize property name of request object and replace UserAgent class.
  UADETECTOR_REQUEST_PROPERTY_NAME = 'agent' # => You can use "request.agent"
  UADETECTOR_USERAGENT_CLASS = 'path.to.MyUserAgent'
 
+See also `example <https://github.com/tell-k/uadetector/blob/master/examples/django/README.rst>`_
+
 Pyramid
 ~~~~~~~~~
 
@@ -133,6 +137,7 @@ Customize property name of request object and replace UserAgent class.
      reify=True
  )
 
+See also `example <https://github.com/tell-k/uadetector/blob/master/examples/pyramid/README.rst>`_
 
 Flask
 ~~~~~~~~~
@@ -163,6 +168,7 @@ Customize property name of request object and replace UserAgent class.
 
  UADetector(app)
 
+See also `example <https://github.com/tell-k/uadetector/blob/master/examples/flask/README.rst>`_
 
 Tornado
 ~~~~~~~~~
@@ -196,6 +202,8 @@ Customize property name of request object and replace UserAgent class.
  )
 
  class IndexHandler(RequestHandler):
+
+See also `example <https://github.com/tell-k/uadetector/blob/master/examples/tornado/README.rst>`_
 
 UserAgent
 ===================

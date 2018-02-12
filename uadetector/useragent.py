@@ -2,6 +2,8 @@
     uadetector.useragent
     ~~~~~~~~~~~~~~~~~~~~~
 
+    UserAgent class based on woothee.
+
     :author: tell-k <ffk2005 at gmail.com>
     :copyright: tell-k. All Rights Reserved.
 """

@@ -1,3 +1,13 @@
+"""
+    uadetector.django.middleware
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    Django middleware class for uadatector.
+
+    :author: tell-k <ffk2005 at gmail.com>
+    :copyright: tell-k. All Rights Reserved.
+"""
+
 import logging
 
 from ..useragent import get_useragent
