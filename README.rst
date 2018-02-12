@@ -14,7 +14,7 @@ Usage
 WSGI middleware
 ----------------------
 
-This middleware provides a `uadetector.useragent.UserAgent` object to handling User-agents.
+This middleware provides a ``uadetector.useragent.UserAgent`` object to handling User-agents.
 
 .. code-block:: python
 
@@ -34,8 +34,8 @@ This middleware provides a `uadetector.useragent.UserAgent` object to handling U
      ua.device_type      #=> "pc"
      ua.os               #=> "Mac OSX"
      ua.browser          #=> "Chrome"
-     ua.from_pc?         #=> True
-     ua.from_smartphone? #=> False
+     ua.from_pc          #=> True 
+     ua.from_smartphone  #=> False
 
      return [ua.os.encoding('utf-8')]
 
@@ -60,11 +60,11 @@ You can also replace the key of ``environ`` or the ``UserAgent`` class.
  application = UADetector(
     app,
     envorion_key='your.favorite.key'
-    useragent_class='xxxx.MyUserAgent'
+    useragent_class='path.to.MyUserAgent'
  )
 
-Web Frameworks
-----------------------
+Web framework extensions
+--------------------------------
 
 Some Web frameworks provide a way to extend in a different way from WSGI Middleware. We provide shortcuts according to that way.
 
@@ -93,6 +93,14 @@ You can use Django's ``MIDDLEWARE``.
      print(request.ua.from_smartphone) # => True or False
      # ... omit ...
 
+How to customize property name of request object and replace UserAgent class. 
+
+.. code-block:: python
+
+ # settings.py
+ 
+ UADTECTOR_REQUEST_PROPERTY_NAME = 'agent' # => You can use "request.agent"
+ UADTECTOR_USERAGENT_CLASS = 'path.to.MyUserAgent' 
 
 Pyramid
 ~~~~~~~~~
@@ -116,6 +124,16 @@ You can use ``config.add_request_method``.
      config.add_request_method(ua_prop(), name='ua', reify=True)
      # ... omit ...
 
+How to customize property name of request object and replace UserAgent class. 
+
+.. code-block:: python
+
+ config.add_request_method(
+     ua_prop('path.to.MyUserAgent'), 
+     name='agent',  # => You can use "request.agent"
+     reify=True
+ )
+ 
 
 Flask
 ~~~~~~~~~
@@ -135,6 +153,18 @@ You can use ``Flask Extension``.
      print(request.ua.from_smartphone) # => True or False
      # ... omit ...
 
+How to customize property name of request object and replace UserAgent class. 
+
+.. code-block:: python
+
+ app = Flask(__name__)
+
+ app.config['UADETECTOR_USERAGENT_CLASS'] = 'path.to.MyUserAgent'
+ app.config['UADETECTOR_REQUEST_PROPERTY_NAME'] = 'agent'
+
+ UADetector(app)
+
+
 Tornado
 ~~~~~~~~~
 
@@ -149,6 +179,24 @@ You can use custom ``RequestHandler``.
       def get(self):
           print(self.request.ua.from_smartphone) # => True or False
           # ... omit ...
+
+How to customize property name of request object and replace UserAgent class. 
+
+.. code-block:: python
+
+ from tornado.options import define
+ from uadetector.tornado.web import RequestHandler
+ 
+ define(
+     'uadetector_request_property_name', 
+     default='agent',
+ )
+ define(
+     'uadetector_useragent_class', 
+     default='path.to.MyUserAgent'
+ )
+
+ class IndexHandler(RequestHandler):
 
 
 UserAgent object

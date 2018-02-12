@@ -12,6 +12,11 @@ class UADetector:
     """ Extension for Flask """
 
     def __init__(self, app=None):
+        self.app = app
+        if app is not None:
+            self.init_app(app)
+
+    def init_app(self, app):
         ua_class = app.config.get('UADETECTOR_USERAGENT_CLASS')
         prop_name = app.config.get('UADETECTOR_REQUEST_PROPERTY_NAME', REQUEST_PROPERTY_NAME)
 

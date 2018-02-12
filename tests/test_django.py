@@ -1,4 +1,5 @@
 from .constants import UA_STRING
+from .testapp import django
 
 
 class TestDjangoMiddleware:

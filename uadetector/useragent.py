@@ -8,7 +8,7 @@
 import re
 
 import woothee
-from woothe.dataset import VALUE_UNKNOWN
+from woothee.dataset import VALUE_UNKNOWN
 
 from .constants import USERAGENT_CLASS
 from .utils import import_class
@@ -51,7 +51,7 @@ class UserAgent:
         return self.__getattribute__(name)
 
     @property
-    def device_variant
+    def device_variant(self):
         if self.device_type.lower() == VALUE_UNKNOWN.lower():
             return UNKNOWN_VARIANT
         return self.device_type
