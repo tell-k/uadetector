@@ -19,9 +19,8 @@ class Settings:
     def __getattr__(self, name):
         name = name.upper()
         if not hasattr(constants, name):  # pragma: no cover
-            raise AttributeError(
-                '{} object has no attribute {}'.format(self.__class__, name)
-            )
+            return self.__getattribute__(name)
+
         default_value = getattr(constants, name)
         setting_name = '{}_{}'.format(self.app_prefix, name)
         return getattr(django_settings, setting_name, default_value)

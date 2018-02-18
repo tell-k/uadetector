@@ -1,0 +1,30 @@
+language: python
+sudo: false
+matrix:
+  include:
+   - python: 3.4
+     env: TOXENV=py34-ver1
+   - python: 3.4
+     env: TOXENV=py34-ver2
+   - python: 3.4
+     env: TOXENV=py34-ver3
+   - python: 3.5
+     env: TOXENV=py35-ver1
+   - python: 3.5
+     env: TOXENV=py35-ver2
+   - python: 3.5
+     env: TOXENV=py35-ver3
+   - python: 3.6
+     env: TOXENV=py36-ver1
+   - python: 3.6
+     env: TOXENV=py36-ver2
+   - python: 3.6
+     env: TOXENV=py36-ver3
+   - python: 3.6
+     env: TOXENV=flake8
+install:
+  - pip install tox
+  - if test "$TOXENV" = py36-ver1 ; then pip install coveralls ; fi
+script: tox
+after_script:
+  - if test "$TOXENV" = py36-ver1 ; then coveralls ; fi

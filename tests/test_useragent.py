@@ -47,6 +47,15 @@ class TestUseragent:
                 ua.unkown_attr
 
     @pytest.mark.parametrize('params,expected', [
+        ({'category': 'pc'}, 'pc'),
+        ({'category': 'unknown'}, 'unknown'),
+    ])
+    def test_device_variant(self, params, expected):
+        with self._patch_woothe(**params):
+            ua = self._make_one('dummy_ua')
+            assert ua.device_variant is expected
+
+    @pytest.mark.parametrize('params,expected', [
         ({'category': 'pc'}, True),
         ({'category': 'smartphone'}, False),
     ])

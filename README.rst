@@ -69,7 +69,7 @@ Web framework extensions
 
 Some web frameworks provide a way to extend in a different way from WSGI Middleware. We provide shortcuts according to that way.
 
-**Caution: I don't intend to actively respond to the framework. If you are worried, you should use WSGIMiddleware.**
+**Caution: I do not actively support individual frameworks. If you are worried, you should use WSGIMiddleware.**
 
 Django
 ~~~~~~~~~

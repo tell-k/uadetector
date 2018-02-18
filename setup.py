@@ -63,13 +63,13 @@ classifiers = [
 setup(
     name='uadetector',
     version=version,
-    description='UserAgent detection tool',  # NOQA
+    description='WSGI Middleware and web framework extensions for handling User-Agent.',  # NOQA
     long_description=readme,
     url='https://github.com/tell-k/uadetector',
     author='tell-k',
     author_email='ffk2005@gmail.com',
     classifiers=classifiers,
-    keywords=['user_agent', 'web', 'browser', 'detection'],
+    keywords=['user_agent', 'web', 'browser', 'detector', 'handling'],
     install_requires=requires,
     tests_require=tests_require,
     cmdclass={'test': PyTest},
