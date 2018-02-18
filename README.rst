@@ -64,7 +64,7 @@ You can also replace the key of ``environ`` or the ``UserAgent`` class.
     useragent_class='path.to.MyUserAgent'
  )
 
-See also `example <https://github.com/tell-k/uadetector/blob/master/examples/wsgi/>`_.
+See also `WSGI example <https://github.com/tell-k/uadetector/blob/master/examples/wsgi/>`_.
 
 Web framework extensions
 --------------------------------
@@ -105,7 +105,7 @@ Customize property name of request object and replace UserAgent class.
  UADETECTOR_REQUEST_PROPERTY_NAME = 'agent' # => You can use "request.agent"
  UADETECTOR_USERAGENT_CLASS = 'path.to.MyUserAgent'
 
-See also `example <https://github.com/tell-k/uadetector/blob/master/examples/django/>`_.
+See also `Dajngo example <https://github.com/tell-k/uadetector/blob/master/examples/django/>`_.
 
 Pyramid
 ~~~~~~~~~
@@ -139,7 +139,7 @@ Customize property name of request object and replace UserAgent class.
      reify=True
  )
 
-See also `example <https://github.com/tell-k/uadetector/blob/master/examples/pyramid/>`_.
+See also `Pyramid example <https://github.com/tell-k/uadetector/blob/master/examples/pyramid/>`_.
 
 Flask
 ~~~~~~~~~
@@ -170,7 +170,7 @@ Customize property name of request object and replace UserAgent class.
 
  UADetector(app)
 
-See also `example <https://github.com/tell-k/uadetector/blob/master/examples/flask/>`_.
+See also `Flask example <https://github.com/tell-k/uadetector/blob/master/examples/flask/>`_.
 
 Tornado
 ~~~~~~~~~
@@ -205,7 +205,7 @@ Customize property name of request object and replace UserAgent class.
 
  class IndexHandler(RequestHandler):
 
-See also `example <https://github.com/tell-k/uadetector/blob/master/examples/tornado/>`_.
+See also `Tornado example <https://github.com/tell-k/uadetector/blob/master/examples/tornado/>`_.
 
 UserAgent
 ===================
