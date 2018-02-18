@@ -1,5 +1,7 @@
 WSGI Middleware and web framework extensions for handling User-Agent. Thanks to `woothee <https://github.com/woothee/woothee-python>`_ , UADetector supports various User-Agents. This library respects to `k0kubun/rack-user_agent <https://github.com/k0kubun/rack-user_agent>`_ .
 
+|travis| |coveralls| |version| |license|
+
 Installation
 ===================
 
@@ -284,7 +286,22 @@ Authors
 History
 =======
 
-0.1.0(Feb 12, 2018)
+0.1.0(Feb 19, 2018)
 ---------------------
 
 * First release
+
+.. |travis| image:: https://travis-ci.org/tell-k/uadetector.svg?branch=master
+    :target: https://travis-ci.org/tell-k/uadetector
+
+.. |coveralls| image:: https://coveralls.io/repos/tell-k/uadetector/badge.png
+    :target: https://coveralls.io/r/tell-k/uadetector
+    :alt: coveralls.io
+
+.. |version| image:: https://img.shields.io/pypi/v/uadetector.svg
+    :target: http://pypi.python.org/pypi/uadetector/
+    :alt: latest version
+
+.. |license| image:: https://img.shields.io/pypi/l/uadetector.svg
+    :target: http://pypi.python.org/pypi/uadetector/
+    :alt: license
