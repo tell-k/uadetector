@@ -260,6 +260,16 @@ If you want a ``UserAgent`` object simply from the User-Agent string, Please use
  # Use custom useragent class
  ua = get_useragent(ua_string, useragent_class='path.to.MyUserAgent')
 
+Support
+========
+
+Support latest 3 minor versions.
+
+* Python 3.4, 3.5, 3.6
+* Django 1.10, 1.11, 2.0
+* Pyramid 1.7, 1.8, 1.9
+* Flask 0.10, 0.11, 0.12
+* Tornado 4.5, 4.6, 4.7
 
 License
 ========
