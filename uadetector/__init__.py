@@ -12,4 +12,4 @@ from .wsgi import UADetector  # NOQA
 from .useragent import UserAgent, get_useragent  # NOQA
 from .constants import ENVIRON_KEY  # NOQA
 
-__version__ = '0.1.1'
+__version__ = '0.1.2'

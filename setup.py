@@ -73,6 +73,6 @@ setup(
     install_requires=requires,
     tests_require=tests_require,
     cmdclass={'test': PyTest},
-    packages=find_packages(exclude=['tests']),
+    packages=find_packages(exclude=['tests*']),
     license='MIT',
 )
