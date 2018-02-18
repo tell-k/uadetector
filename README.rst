@@ -286,10 +286,11 @@ Authors
 History
 =======
 
-0.1.0(Feb 19, 2018)
+0.1.2(Feb 19, 2018)
 ---------------------
 
 * First release
+
 
 .. |travis| image:: https://travis-ci.org/tell-k/uadetector.svg?branch=master
     :target: https://travis-ci.org/tell-k/uadetector
