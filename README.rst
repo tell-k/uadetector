@@ -38,7 +38,7 @@ This middleware provides a ``uadetector.useragent.UserAgent`` object to handling
      ua.from_pc          #=> True
      ua.from_smartphone  #=> False
 
-     return [ua.os.encoding('utf-8')]
+     return [ua.os.encode('utf-8')]
 
  # Apply middleware
  application = UADetector(app)
