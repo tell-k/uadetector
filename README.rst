@@ -107,7 +107,7 @@ Customize property name of request object and replace UserAgent class.
 
 See also `Dajngo example <https://github.com/tell-k/uadetector/blob/master/examples/django/>`_.
 
-Tips: `Switch templates based on User-Agent <https://github.com/tell-k/django-variantmpl#switch-templates-based-on-user-agent>`_  (with `django-variantmpl<https://github.com/tell-k/django-variantmpl>`_).
+Tips: `Switch templates based on User-Agent <https://github.com/tell-k/django-variantmpl#switch-templates-based-on-user-agent>`_  (using `django-variantmpl <https://github.com/tell-k/django-variantmpl>`_ ).
 
 Pyramid
 ~~~~~~~~~
