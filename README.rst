@@ -69,7 +69,7 @@ See also `WSGI example <https://github.com/tell-k/uadetector/blob/master/example
 Web framework extensions
 --------------------------------
 
-Some web frameworks provide a way to extend in a different way from WSGI Middleware. We provide shortcuts according to that way.
+Some web frameworks provide a way to extend in a different way from WSGI Middleware. This library provide shortcuts according to that way.
 
 **Caution: I do not actively support individual frameworks. If you are worried, you should use WSGIMiddleware.**
 
@@ -106,6 +106,8 @@ Customize property name of request object and replace UserAgent class.
  UADETECTOR_USERAGENT_CLASS = 'path.to.MyUserAgent'
 
 See also `Dajngo example <https://github.com/tell-k/uadetector/blob/master/examples/django/>`_.
+
+Tips: `Switch templates based on User-Agent <https://github.com/tell-k/django-variantmpl#switch-templates-based-on-user-agent>`_  (with `django-variantmpl<https://github.com/tell-k/django-variantmpl>`_).
 
 Pyramid
 ~~~~~~~~~
