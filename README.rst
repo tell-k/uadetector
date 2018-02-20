@@ -288,6 +288,11 @@ Authors
 History
 =======
 
+0.1.3(Feb 20, 2018)
+---------------------
+
+* `Lazy parsing User-Agent string <https://github.com/tell-k/uadetector/pull/1>`_ .
+
 0.1.2(Feb 19, 2018)
 ---------------------
 
