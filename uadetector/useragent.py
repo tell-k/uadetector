@@ -43,12 +43,14 @@ class UserAgent:
         'browser_vendor': 'vendor',
     }
 
-    def __init__(self, useragent_string):
-        self.user_agent = useragent_string
-        self._woothee_result = woothee.parse(useragent_string)
+    def __init__(self, user_agent):
+        self.user_agent = user_agent
+        self._woothee_result = None
 
     def __getattr__(self, name):
         if name in self.attr_map:
+            if self._woothee_result is None:
+                self._woothee_result = woothee.parse(self.user_agent)
             return self._woothee_result.get(self.attr_map.get(name))
         return self.__getattribute__(name)
 
